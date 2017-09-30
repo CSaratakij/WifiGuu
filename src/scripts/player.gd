@@ -3,6 +3,7 @@ extends RigidBody2D
 const MOVE_FORCE = 500
 
 onready var sprite = get_node("Sprite")
+onready var anim = get_node("AnimationPlayer")
 onready var timer = get_node("Timer")
 onready var download_progress = get_node("DownloadProgress")
 
@@ -46,6 +47,12 @@ func _process(delta):
 			timer.start()
 	else:
 		timer.stop()
+
+	if moveDir.x != 0.0 or moveDir.y != 0.0:
+		if not anim.is_playing():
+			anim.play("walk")
+	else:
+		anim.stop()
 
 func _fixed_process(delta):
 	if moveDir.length() > 1:
