@@ -3,11 +3,12 @@ extends RigidBody2D
 const MOVE_FORCE = 480
 
 onready var sprite = get_node("Sprite")
+onready var timer = get_node("Timer")
+onready var download_progress = get_node("DownloadProgress")
+onready var animIdle = get_node("animIdle")
 onready var animAttack = get_node("animAttack")
 onready var animWalk = get_node("animWalk")
 onready var animTimer = get_node("animationTimer")
-onready var timer = get_node("Timer")
-onready var download_progress = get_node("DownloadProgress")
 
 var isFlip = false
 var isDownloading = false
@@ -58,16 +59,19 @@ func _process(delta):
 		timer.stop()
 
 	if isPressedAttack:
+		animIdle.stop()
 		animWalk.stop()
 		if not animAttack.is_playing():
 			animAttack.play("attack")
 	else:
+		animIdle.stop()
 		animAttack.stop()
 		if moveDir.x != 0.0 or moveDir.y != 0.0:
 			if not animWalk.is_playing():
 				animWalk.play("walk")
 		else:
 			animWalk.stop()
+			animIdle.play("Idle")
 
 func _fixed_process(delta):
 	if not isPressedAttack:
@@ -98,4 +102,6 @@ func _flip_sprite():
 
 func _on_animationTimer_timeout():
 	isPressedAttack = false
+	animAttack.stop()
+	animIdle.play("Idle")
 

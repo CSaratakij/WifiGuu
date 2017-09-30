@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=2]
@@ -21,6 +21,12 @@ height = 94.5986
 
 custom_solver_bias = 0.0
 extents = Vector2( 72.7493, 844.522 )
+
+[sub_resource type="NavigationPolygon" id=4]
+
+vertices = Vector2Array(  )
+polygons = [  ]
+outlines = [  ]
 
 [node name="level" type="Node2D"]
 
@@ -185,5 +191,13 @@ friction = 0.0
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832.537, -12.6142 )
+
+[node name="Navigation2D_Testing" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance1" type="NavigationPolygonInstance" parent="Navigation2D_Testing"]
+
+transform/pos = Vector2( 75.8954, 151.791 )
+navpoly = SubResource( 4 )
+enabled = true
 
 
