@@ -1,8 +1,9 @@
 extends RigidBody2D
 
-const MOVE_FORCE = 300
+const MOVE_FORCE = 500
 
 onready var sprite = get_node("Sprite")
+onready var download_progress = get_node("DownloadProgress")
 
 var isFlip = false
 
@@ -11,8 +12,8 @@ var velocity = Vector2()
 
 
 func _ready():
-	set_process_input(true)
 	set_process(true)
+	set_process_input(true)
 	set_fixed_process(true)
 
 func _input(event):
@@ -42,6 +43,11 @@ func _fixed_process(delta):
 		moveDir = moveDir.normalized()
 	velocity = moveDir * MOVE_FORCE
 	set_linear_velocity(velocity)
+
+func _on_Area2D_area_enter(area):
+	var groups = area.get_groups()
+	if groups.has("router"):
+		print("Found router..")
 
 func _flip_sprite():
 	isFlip = !isFlip
