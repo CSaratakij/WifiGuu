@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const MOVE_FORCE = 500
+const MOVE_FORCE = 480
 
 onready var sprite = get_node("Sprite")
 onready var anim = get_node("AnimationPlayer")
