@@ -12,6 +12,9 @@ var isDownloading = false
 var moveDir = Vector2()
 var velocity = Vector2()
 
+var maxBitRate = 1.5
+var currentBitRate = maxBitRate
+
 
 func _ready():
 	set_process(true)
@@ -53,20 +56,16 @@ func _fixed_process(delta):
 func _on_Area2D_area_enter(area):
 	var groups = area.get_groups()
 	if groups.has("router"):
-		print("Found router..")
 		isDownloading = true
 
 func _on_Area2D_area_exit( area ):
 	var groups = area.get_groups()
 	if groups.has("router"):
-		print("Exit out of router..")
 		isDownloading = false
 
 func _on_Timer_timeout():
 	if isDownloading:
-		download_progress.restore(1)
-		print("Restore : 1")
-		print("Timeout")
+		download_progress.restore(currentBitRate)
 
 func _flip_sprite():
 	isFlip = !isFlip
