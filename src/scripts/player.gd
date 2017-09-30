@@ -41,7 +41,8 @@ func _process(delta):
 	if isDownloading:
 		if timer.get_time_left() == 0:
 			timer.start()
-
+	else:
+		timer.stop()
 
 func _fixed_process(delta):
 	if moveDir.length() > 1:

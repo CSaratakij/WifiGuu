@@ -13,10 +13,18 @@ func clear():
 	current = minimum
 
 func restore(value):
-	current += value
+	var newValue = current + value
+	if newValue > maximum:
+		current = maximum
+	else:
+		current = newValue
 
 func remove(value):
-	current -= value
+	var newValue = current - value
+	if newValue <= minimum:
+		current = minimum
+	else:
+		current = newValue
 
 func is_empty():
 	return current <= minimum
