@@ -101,8 +101,8 @@ func _process(delta):
 		if not animAttack.is_playing():
 			animAttack.play("attack")
 	else:
-		animIdle.stop()
 		animAttack.stop()
+		animIdle.stop()
 		if moveDir.x != 0.0 or moveDir.y != 0.0:
 			if not animWalk.is_playing():
 				animWalk.play("walk")

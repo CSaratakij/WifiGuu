@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var tree = get_owner().get_tree()
 onready var pauseUI = get_owner().get_node("pauseUI")
 onready var timer = get_owner().get_node("RandomRouterTimer")
 
@@ -21,6 +22,8 @@ func _process(delta):
 
 	if player.download_progress.current >= player.download_progress.maximum:
 		pauseUI.show()
+		tree.set_pause(true)
+
 
 func _on_RandomRouterTimer_timeout():
 	random_select_router()

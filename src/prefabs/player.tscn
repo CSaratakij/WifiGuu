@@ -160,6 +160,7 @@ transform/pos = Vector2( -127.845, -99.8465 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 4
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -214,7 +215,7 @@ root/root = NodePath("..")
 anims/attack = SubResource( 4 )
 anims/walk = SubResource( 3 )
 playback/active = true
-playback/speed = 2.0
+playback/speed = 1.5
 blend_times = [  ]
 autoplay = ""
 
@@ -233,7 +234,7 @@ autoplay = ""
 [node name="animationTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.6
+wait_time = 0.4
 one_shot = true
 autostart = false
 
