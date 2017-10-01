@@ -1,4 +1,4 @@
-extends Panel
+extends TextureFrame
 
 onready var _tree = get_tree()
 onready var nextScene = preload("res://scenes/level.tscn")
