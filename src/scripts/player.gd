@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const MOVE_FORCE = 480
-const BACKOFF_FORCE = 1000
+const BACKOFF_FORCE = 3500
 
 onready var sprite = get_node("Sprite")
 onready var timer = get_node("Timer")

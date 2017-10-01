@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://res/Background blank2.png" type="Texture" id=2]
 [ext_resource path="res://res/Background ref.png" type="Texture" id=3]
 [ext_resource path="res://res/Door.png" type="Texture" id=4]
-[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=7]
-[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://res/Corner.png" type="Texture" id=5]
+[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=4]
 
@@ -19,7 +20,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 134.808, 6.79791 )
+extents = Vector2( 143.142, 6.79791 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
@@ -29,7 +30,12 @@ extents = Vector2( 156.351, 6.79791 )
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 67.4443, 32.5341 )
+extents = Vector2( 67.4443, 45.1708 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 94.1104, 14.9039 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -67,19 +73,50 @@ transform/pos = Vector2( 690.063, 400.823 )
 z/relative = false
 texture = ExtResource( 4 )
 
-[node name="player" parent="YSort" instance=ExtResource( 5 )]
+[node name="wallVert" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 562.284, 330.717 )
+z/relative = false
+texture = ExtResource( 5 )
+
+[node name="player" parent="YSort" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 636.641, 260.938 )
 mode = 2
 friction = 0.0
 
+[node name="enemy" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 785.706, 199.966 )
+
+[node name="enemy1" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 356.076, 255.601 )
+
+[node name="enemy2" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 417.445, 528.973 )
+
+[node name="enemy3" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 922.345, 559.657 )
+
+[node name="enemy4" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1036.72, 297.444 )
+
+[node name="enemy5" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 244.495, 406.234 )
+
 [node name="Path2D" type="Path2D" parent="YSort"]
 
-editor/display_folded = true
+visibility/visible = false
 curve = SubResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="YSort/Path2D"]
 
+visibility/visible = false
 transform/pos = Vector2( 194.984, 223.933 )
 transform/rot = 29.3154
 offset = 0.0
@@ -90,45 +127,14 @@ cubic_interp = true
 loop = true
 lookahead = 4.0
 
-[node name="enemy" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 526.807, 268.33 )
-transform/rot = -29.3154
-
-[node name="enemy1" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 124.957, 106.486 )
-transform/rot = -29.3154
-
-[node name="enemy2" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 44.6195, 374.897 )
-transform/rot = -29.3154
-
-[node name="enemy3" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 469.837, 648.86 )
-transform/rot = -29.3154
-
-[node name="enemy4" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 697.945, 476.223 )
-transform/rot = -29.3154
-
-[node name="enemy5" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( -46.0869, 183.198 )
-transform/rot = -29.3154
-
 [node name="level_collision" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="vertWall" type="StaticBody2D" parent="level_collision"]
 
+transform/pos = Vector2( -5.40247, -12.2531 )
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 570.027, 338.325 )
+shapes/0/transform = Matrix32( -3.96698e-08, -0.90754, 1, -4.37114e-08, 571.893, 358.945 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -139,8 +145,9 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/vertWall"]
 
-transform/pos = Vector2( 570.027, 338.325 )
+transform/pos = Vector2( 571.893, 358.945 )
 transform/rot = 90.0
+transform/scale = Vector2( 0.90754, 1 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
@@ -150,7 +157,7 @@ _update_shape_index = 0
 transform/pos = Vector2( 226.038, 1.10803 )
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 570.027, 338.325 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 570.027, 313.957 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -161,7 +168,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/vertWall2"]
 
-transform/pos = Vector2( 570.027, 338.325 )
+transform/pos = Vector2( 570.027, 313.957 )
 transform/rot = 90.0
 shape = SubResource( 5 )
 trigger = false
@@ -194,7 +201,7 @@ _update_shape_index = 0
 transform/pos = Vector2( 646.163, 461.312 )
 input/pickable = false
 shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -5.98737, -20.357 )
+shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -1.20447, -34.8792 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -205,15 +212,38 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/horizonWall"]
 
-transform/pos = Vector2( -5.98737, -20.357 )
+transform/pos = Vector2( -1.20447, -34.8792 )
+transform/scale = Vector2( 1.12929, 1.08637 )
 shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="horizonWall1" type="StaticBody2D" parent="level_collision"]
+
+transform/pos = Vector2( 646.163, 461.312 )
+input/pickable = false
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, 263.408, -302.426 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/horizonWall1"]
+
+transform/pos = Vector2( 263.408, -302.426 )
+transform/scale = Vector2( 1.12929, 1.08637 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
 [node name="testbox" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 740.468, -70.3137 )
+transform/pos = Vector2( 740.468, 32.7893 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 128.224, 30.3582 )
@@ -254,7 +284,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="router" parent="." instance=ExtResource( 7 )]
+[node name="router" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 254.635, 386.806 )
 
@@ -322,7 +352,7 @@ shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
-[node name="progressUI" parent="." instance=ExtResource( 8 )]
+[node name="progressUI" parent="." instance=ExtResource( 9 )]
 
 margin/left = 2.0
 margin/top = -13.0
