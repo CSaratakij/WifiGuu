@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 const MOVE_FORCE = 480
+const BACKOFF_FORCE = 1000
+# const BACKOFF_FORCE = 600
 
 onready var sprite = get_node("Sprite")
 onready var timer = get_node("Timer")
@@ -9,11 +11,16 @@ onready var animIdle = get_node("animIdle")
 onready var animAttack = get_node("animAttack")
 onready var animWalk = get_node("animWalk")
 onready var animTimer = get_node("animationTimer")
+onready var raycastRight = get_node("checkAttack_right")
+onready var raycastLeft = get_node("checkAttack_left")
 
 var isFlip = false
 var isDownloading = false
 var isAttacking = false
 var isPressedAttack = false
+
+var isCollide_right = false
+var isCollide_left = false
 
 var moveDir = Vector2()
 var velocity = Vector2()
@@ -52,6 +59,35 @@ func _input(event):
 		moveDir.y = 0
 
 func _process(delta):
+	isCollide_right = raycastRight.is_colliding()
+	if isCollide_right and not sprite.is_flipped_h():
+		if Input.is_action_pressed("attack"):
+			var obj = raycastRight.get_collider()
+			var groups = obj.get_groups()
+			if groups.has("enemy"):
+				var enemy = obj.get_owner()
+				print("About to attack enemy..")
+
+				var enemyPos = enemy.get_global_pos()
+				var relativeDir = (get_global_pos() - enemyPos).normalized()
+
+				if get_global_pos().y > enemyPos.y:
+					relativeDir.y *= -1
+
+				relativeDir.x *= -1
+				enemy.back_off(relativeDir * BACKOFF_FORCE)
+
+	isCollide_left = raycastLeft.is_colliding()
+	if isCollide_left and sprite.is_flipped_h():
+		if Input.is_action_pressed("attack"):
+			var obj = raycastLeft.get_collider()
+			var groups = obj.get_groups()
+			if groups.has("enemy"):
+				var enemy = obj.get_owner()
+				print("About to attack enemy..")
+				var relativeDir = (get_global_pos() - enemy.get_global_pos()).normalized()
+				enemy.back_off(relativeDir * BACKOFF_FORCE)
+
 	if isDownloading:
 		if timer.get_time_left() == 0:
 			timer.start()

@@ -22,11 +22,12 @@ height = 94.5986
 custom_solver_bias = 0.0
 extents = Vector2( 72.7493, 844.522 )
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="Curve2D" id=4]
 
-vertices = Vector2Array(  )
-polygons = [  ]
-outlines = [  ]
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 0, 0, 194.984, 223.933, 0, 0, 0, 0, 412.107, 102.01, 0, 0, 0, 0, 1165.36, 103.68, 0, 0, 0, 0, 1138.64, 634.797, 0, 0, 0, 0, 194.984, 613.085, 0, 0, 0, 0, 194.984, 223.933 )
+}
 
 [node name="level" type="Node2D"]
 
@@ -83,6 +84,7 @@ transform/pos = Vector2( 254.635, 386.806 )
 
 [node name="testRigid" type="RigidBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 79.9714, 92.2746 )
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
@@ -188,16 +190,50 @@ transform/pos = Vector2( 534.72, 265.815 )
 mode = 2
 friction = 0.0
 
-[node name="enemy" parent="." instance=ExtResource( 5 )]
+[node name="Path2D" type="Path2D" parent="."]
 
-transform/pos = Vector2( 832.537, -12.6142 )
+curve = SubResource( 4 )
 
-[node name="Navigation2D_Testing" type="Navigation2D" parent="."]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
-[node name="NavigationPolygonInstance1" type="NavigationPolygonInstance" parent="Navigation2D_Testing"]
+transform/pos = Vector2( 194.984, 223.933 )
+transform/rot = 29.3154
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
 
-transform/pos = Vector2( 75.8954, 151.791 )
-navpoly = SubResource( 4 )
-enabled = true
+[node name="enemy" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 526.807, 268.33 )
+transform/rot = -29.3154
+
+[node name="enemy1" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 124.957, 106.486 )
+transform/rot = -29.3154
+
+[node name="enemy2" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 44.6195, 374.897 )
+transform/rot = -29.3154
+
+[node name="enemy3" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 469.837, 648.86 )
+transform/rot = -29.3154
+
+[node name="enemy4" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 697.945, 476.223 )
+transform/rot = -29.3154
+
+[node name="enemy5" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -46.0869, 183.198 )
+transform/rot = -29.3154
 
 
