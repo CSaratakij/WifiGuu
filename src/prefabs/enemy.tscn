@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.1328, 27.8859 )
+extents = Vector2( 10.4695, 23.8237 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 

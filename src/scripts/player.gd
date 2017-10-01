@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const MOVE_FORCE = 480
+const MOVE_FORCE = 360
 const BACKOFF_FORCE = 3500
 
 onready var sprite = get_node("Sprite")
