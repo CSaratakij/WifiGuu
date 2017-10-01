@@ -23,7 +23,7 @@ func _fixed_process(delta):
 			move_to_target()
 
 func set_pos_target(target):
-	pass
+	pos_target = target
 
 func back_off(moveDir):
 	print("About to backoff : ", moveDir)
@@ -39,7 +39,6 @@ func _on_Timer_timeout():
 	isHit = false
 
 func move_to_target():
-	# print("Moving to target..")
 	var dir = relativePos.normalized()
 	var velocity = MOVE_FORCE * dir
 	set_linear_velocity(velocity)
