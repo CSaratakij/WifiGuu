@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scripts/gamecontroller.gd" type="Script" id=2]
-[ext_resource path="res://res/Background blank2.png" type="Texture" id=3]
+[ext_resource path="res://res/Carpet change.png" type="Texture" id=3]
 [ext_resource path="res://res/Background ref.png" type="Texture" id=4]
 [ext_resource path="res://res/Door.png" type="Texture" id=5]
 [ext_resource path="res://res/Corner.png" type="Texture" id=6]
@@ -12,14 +12,15 @@
 [ext_resource path="res://res/Tree2.png" type="Texture" id=10]
 [ext_resource path="res://res/Shelf.png" type="Texture" id=11]
 [ext_resource path="res://res/Arcade.png" type="Texture" id=12]
-[ext_resource path="res://res/Snook.png" type="Texture" id=13]
-[ext_resource path="res://res/Table6.png" type="Texture" id=14]
-[ext_resource path="res://res/Table 3.png" type="Texture" id=15]
-[ext_resource path="res://res/Table2.png" type="Texture" id=16]
-[ext_resource path="res://res/Table5.png" type="Texture" id=17]
-[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=18]
-[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=19]
-[ext_resource path="res://prefabs/pauseUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://res/Carpet.png" type="Texture" id=13]
+[ext_resource path="res://res/Snook new.png" type="Texture" id=14]
+[ext_resource path="res://res/Table6.png" type="Texture" id=15]
+[ext_resource path="res://res/Table 3.png" type="Texture" id=16]
+[ext_resource path="res://res/Table2.png" type="Texture" id=17]
+[ext_resource path="res://res/Table5.png" type="Texture" id=18]
+[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=19]
+[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://prefabs/pauseUI.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -73,11 +74,6 @@ extents = Vector2( 63.0526, 25.1639 )
 custom_solver_bias = 0.0
 extents = Vector2( 46.1569, 25.1639 )
 
-[sub_resource type="RectangleShape2D" id=11]
-
-custom_solver_bias = 0.0
-extents = Vector2( 69.8228, 25.1639 )
-
 [sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
@@ -119,12 +115,12 @@ centered = false
 
 [node name="ref" type="Sprite" parent="."]
 
+visibility/visible = false
 texture = ExtResource( 4 )
 centered = false
 
 [node name="YSort" type="YSort" parent="."]
 
-editor/display_folded = true
 sort/enabled = true
 
 [node name="wall_with_door" type="Sprite" parent="YSort"]
@@ -214,40 +210,52 @@ texture = ExtResource( 11 )
 transform/pos = Vector2( 819.153, 353.533 )
 texture = ExtResource( 12 )
 
+[node name="carpet" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 1151.24, 463.438 )
+texture = ExtResource( 13 )
+offset = Vector2( -13.3042, 77.936 )
+
+[node name="carpet1" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 1145.24, 555.438 )
+texture = ExtResource( 13 )
+offset = Vector2( -7.3042, 80.936 )
+
 [node name="snooker" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 1139.75, 515.177 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="snooker1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 1139.75, 619.867 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="laptop" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 492.895, 264.826 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="laptop1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 79.1611, 399.853 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="computer" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 77.491, 535.818 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="computer1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 494.874, 401.158 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="computer2" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 78.8744, 264.159 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="Path2D" type="Path2D" parent="YSort"]
 
@@ -268,8 +276,6 @@ loop = true
 lookahead = 4.0
 
 [node name="level_collision" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="vertWall6" type="StaticBody2D" parent="level_collision"]
 
@@ -630,28 +636,6 @@ shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
 
-[node name="horizonWall8" type="StaticBody2D" parent="level_collision"]
-
-transform/pos = Vector2( 661.168, 651.474 )
-input/pickable = false
-shapes/0/shape = SubResource( 11 )
-shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -613.223, -516.402 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/horizonWall8"]
-
-transform/pos = Vector2( -613.223, -516.402 )
-transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 11 )
-trigger = false
-_update_shape_index = 0
-
 [node name="horizonWall9" type="StaticBody2D" parent="level_collision"]
 
 transform/pos = Vector2( 661.168, 651.474 )
@@ -920,16 +904,16 @@ shape = SubResource( 15 )
 trigger = false
 _update_shape_index = 0
 
-[node name="router" parent="." instance=ExtResource( 18 )]
+[node name="router" parent="." instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 507.147, 399.589 )
 
-[node name="router1" parent="." instance=ExtResource( 18 )]
+[node name="router1" parent="." instance=ExtResource( 19 )]
 
 visibility/visible = false
 transform/pos = Vector2( 1059.13, 278.702 )
 
-[node name="router2" parent="." instance=ExtResource( 18 )]
+[node name="router2" parent="." instance=ExtResource( 19 )]
 
 visibility/visible = false
 transform/pos = Vector2( 58.0144, 522.745 )
@@ -956,11 +940,10 @@ drag_margin/bottom = 0.2
 
 [node name="vert" type="StaticBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -116.778, -28.4383 )
 input/pickable = false
 shapes/0/shape = SubResource( 16 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 44.72, 376.245 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 52.0864, 376.245 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -971,7 +954,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vert"]
 
-transform/pos = Vector2( 44.72, 376.245 )
+transform/pos = Vector2( 52.0864, 376.245 )
 shape = SubResource( 16 )
 trigger = false
 _update_shape_index = 0
@@ -998,14 +981,14 @@ shape = SubResource( 16 )
 trigger = false
 _update_shape_index = 0
 
-[node name="progressUI" parent="." instance=ExtResource( 19 )]
+[node name="progressUI" parent="." instance=ExtResource( 20 )]
 
 margin/left = 2.0
 margin/top = -13.0
 margin/right = 42.0
 margin/bottom = 27.0
 
-[node name="pauseUI" parent="." instance=ExtResource( 20 )]
+[node name="pauseUI" parent="." instance=ExtResource( 21 )]
 
 process/pause_mode = 2
 visibility/visible = false
