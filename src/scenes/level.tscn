@@ -1,23 +1,24 @@
-[gd_scene load_steps=35 format=1]
+[gd_scene load_steps=36 format=1]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
-[ext_resource path="res://res/Background blank2.png" type="Texture" id=2]
-[ext_resource path="res://res/Background ref.png" type="Texture" id=3]
-[ext_resource path="res://res/Door.png" type="Texture" id=4]
-[ext_resource path="res://res/Corner.png" type="Texture" id=5]
-[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://res/Tree1.png" type="Texture" id=8]
-[ext_resource path="res://res/Tree2.png" type="Texture" id=9]
-[ext_resource path="res://res/Shelf.png" type="Texture" id=10]
-[ext_resource path="res://res/Arcade.png" type="Texture" id=11]
-[ext_resource path="res://res/Snook.png" type="Texture" id=12]
-[ext_resource path="res://res/Table6.png" type="Texture" id=13]
-[ext_resource path="res://res/Table 3.png" type="Texture" id=14]
-[ext_resource path="res://res/Table2.png" type="Texture" id=15]
-[ext_resource path="res://res/Table5.png" type="Texture" id=16]
-[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=17]
-[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scripts/gamecontroller.gd" type="Script" id=2]
+[ext_resource path="res://res/Background blank2.png" type="Texture" id=3]
+[ext_resource path="res://res/Background ref.png" type="Texture" id=4]
+[ext_resource path="res://res/Door.png" type="Texture" id=5]
+[ext_resource path="res://res/Corner.png" type="Texture" id=6]
+[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://res/Tree1.png" type="Texture" id=9]
+[ext_resource path="res://res/Tree2.png" type="Texture" id=10]
+[ext_resource path="res://res/Shelf.png" type="Texture" id=11]
+[ext_resource path="res://res/Arcade.png" type="Texture" id=12]
+[ext_resource path="res://res/Snook.png" type="Texture" id=13]
+[ext_resource path="res://res/Table6.png" type="Texture" id=14]
+[ext_resource path="res://res/Table 3.png" type="Texture" id=15]
+[ext_resource path="res://res/Table2.png" type="Texture" id=16]
+[ext_resource path="res://res/Table5.png" type="Texture" id=17]
+[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=18]
+[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -106,141 +107,146 @@ extents = Vector2( 72.7493, 844.522 )
 transform/pos = Vector2( 2, 0 )
 script/script = ExtResource( 1 )
 
+[node name="gamecontroller" type="Node2D" parent="."]
+
+script/script = ExtResource( 2 )
+
 [node name="bg" type="Sprite" parent="."]
-
-texture = ExtResource( 2 )
-centered = false
-
-[node name="ref" type="Sprite" parent="."]
 
 texture = ExtResource( 3 )
 centered = false
 
+[node name="ref" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+centered = false
+
 [node name="YSort" type="YSort" parent="."]
 
+editor/display_folded = true
 sort/enabled = true
 
 [node name="wall_with_door" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 690.063, 400.823 )
 z/relative = false
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="wallVert" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 562.284, 330.717 )
 z/relative = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
-[node name="player" parent="YSort" instance=ExtResource( 6 )]
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 636.641, 260.938 )
 mode = 2
 friction = 0.0
 
-[node name="enemy" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 719.706, 199.966 )
 
-[node name="enemy1" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy1" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 356.076, 255.601 )
 
-[node name="enemy2" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy2" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 417.445, 528.973 )
 
-[node name="enemy3" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy3" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 922.345, 559.657 )
 
-[node name="enemy4" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy4" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 1036.72, 297.444 )
 
-[node name="enemy5" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy5" parent="YSort" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 244.495, 406.234 )
 
 [node name="flowerpot" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 612.744, 669.306 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="flowerpot1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 875.829, 669.306 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="flowerpot3" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 164.473, 537.45 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="flowerpot2" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 744.694, 669.306 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="flowerpot4" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 164.614, 265.932 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="flowerpot5" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 763.447, 155.554 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="vertDoor" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 571.694, 655.306 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="vertDoor1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 917.694, 655.306 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="vertDoor2" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 819.153, 353.533 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="snooker" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 1139.75, 515.177 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="snooker1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 1139.75, 619.867 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="laptop" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 492.895, 264.826 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="laptop1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 79.1611, 399.853 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="computer" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 77.491, 535.818 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="computer1" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 494.874, 401.158 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="computer2" type="Sprite" parent="YSort"]
 
 transform/pos = Vector2( 78.8744, 264.159 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Path2D" type="Path2D" parent="YSort"]
 
@@ -913,7 +919,7 @@ shape = SubResource( 12 )
 trigger = false
 _update_shape_index = 0
 
-[node name="router" parent="." instance=ExtResource( 17 )]
+[node name="router" parent="." instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 514.635, 395.513 )
 
@@ -981,11 +987,20 @@ shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
-[node name="progressUI" parent="." instance=ExtResource( 18 )]
+[node name="progressUI" parent="." instance=ExtResource( 19 )]
 
 margin/left = 2.0
 margin/top = -13.0
 margin/right = 42.0
 margin/bottom = 27.0
+
+[node name="RandomRouterTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="RandomRouterTimer" to="gamecontroller" method="_on_RandomRouterTimer_timeout"]
 
 
