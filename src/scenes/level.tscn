@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=1]
+[gd_scene load_steps=38 format=1]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scripts/gamecontroller.gd" type="Script" id=2]
@@ -74,30 +74,36 @@ extents = Vector2( 63.0526, 25.1639 )
 custom_solver_bias = 0.0
 extents = Vector2( 46.1569, 25.1639 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 47.7592, 16.8515 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 56.0307, 22.8761 )
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=13]
 
 custom_solver_bias = 0.0
 radius = 19.0785
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1814.65, 83.9256 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 72.7493, 844.522 )
+
+[sub_resource type="NavigationPolygon" id=16]
+
+vertices = Vector2Array( 188.607, 297.337, 422.843, 287.971, 438.765, 287.971, 438.765, 307.21, 422.843, 367.582, 723.372, 477.709, 1272.79, 706.779, 8.21646, 706.779, 557.517, 473.065, 1270.33, 145.703, 719.392, 379.523, 787.079, 194.044, 148.813, 260.778, 148.489, 298.308, 145.686, 297.996, 145.686, 242.129, 422.843, 422.645, 461.321, 423.309, 458.004, 452.499, 104.52, 313.433, 104.52, 295.791, 188.607, 260.455, 420.189, 231.58, 561.498, 302.566, 562.161, 368.908, 558.181, 453.163, 574.766, 378.86, 574.766, 260.771, 755.899, 191.39, 790.397, 151.585, 564.815, 232.907, 751.255, 150.258, 8.22343, 314.903, 6.98874, 150.614, 8.95853, 241.394 )
+polygons = [ IntArray( 0, 1, 2, 3, 4 ), IntArray( 5, 6, 7, 8 ), IntArray( 9, 6, 5, 10, 11 ), IntArray( 12, 13, 14, 15 ), IntArray( 16, 17, 18, 7 ), IntArray( 19, 20, 14 ), IntArray( 1, 0, 21, 22 ), IntArray( 3, 23, 24, 4 ), IntArray( 18, 25, 8, 7 ), IntArray( 11, 10, 26, 27, 28 ), IntArray( 11, 29, 9 ), IntArray( 28, 27, 30, 31 ), IntArray( 21, 12, 15, 22 ), IntArray( 0, 4, 16, 7, 13 ), IntArray( 14, 13, 7, 19 ), IntArray( 32, 19, 7 ), IntArray( 32, 7, 33 ), IntArray( 34, 32, 33 ), IntArray( 22, 15, 34, 33, 31 ), IntArray( 31, 30, 22 ), IntArray( 31, 33, 9 ), IntArray( 31, 9, 29 ) ]
+outlines = [ Vector2Array( 6.98874, 150.614, 8.21646, 706.779, 1272.79, 706.779, 1270.33, 145.703 ), Vector2Array( 8.95853, 241.394, 145.686, 242.129, 145.686, 297.996, 104.52, 295.791, 104.52, 313.433, 8.22343, 314.903 ), Vector2Array( 148.813, 260.778, 188.607, 260.455, 188.607, 297.337, 148.489, 298.308 ), Vector2Array( 422.843, 367.582, 562.161, 368.908, 561.498, 302.566, 438.765, 307.21, 438.765, 287.971, 422.843, 287.971, 420.189, 231.58, 564.815, 232.907, 574.766, 260.771, 574.766, 378.86, 719.392, 379.523, 723.372, 477.709, 557.517, 473.065, 558.181, 453.163, 458.004, 452.499, 461.321, 423.309, 422.843, 422.645 ), Vector2Array( 751.255, 150.258, 790.397, 151.585, 787.079, 194.044, 755.899, 191.39 ), Vector2Array( 788.635, 135.06, 788.635, 452.06, 837.635, 453.06, 837.635, 270.06, 799.635, 273.06, 800.635, 133.06 ), Vector2Array( 798.635, 176.06, 1022.63, 175.06, 1020.63, 136.06, 790.635, 133.06 ), Vector2Array( 1061.63, 487.06, 1206.63, 490.06, 1202.63, 547.06, 1060.63, 546.06 ), Vector2Array( 1069.63, 601.06, 1209.63, 602.06, 1211.63, 662.06, 1057.63, 662.06 ), Vector2Array( 901.635, 623.06, 937.635, 628.06, 935.635, 730.06, 895.635, 730.06 ), Vector2Array( 865.92, 664.291, 894.06, 667.285, 893.461, 703.808, 851.55, 705.604 ), Vector2Array( 727.611, 657.106, 773.115, 663.093, 769.523, 709.795, 716.834, 710.992 ), Vector2Array( 550.385, 627.768, 595.889, 627.169, 592.297, 734.343, 542.602, 724.165 ), Vector2Array( 600.679, 666.087, 638.4, 669.081, 638.4, 713.387, 595.29, 712.19 ), Vector2Array( -0.775284, 362.984, 8.99879, 368.685, 147.465, 370.314, 143.392, 426.515, 102.667, 427.33, 106.74, 452.579, -4.84781, 451.765 ), Vector2Array( -0.465332, 524.733, 146.045, 527.547, 144.718, 579.957, 102.259, 581.947, 100.932, 590.572, 1.73994, 594.566 ), Vector2Array( 185.187, 537.498, 188.504, 570.669, 148.035, 573.986, 148.699, 539.489 ) ]
 
 [node name="level" type="Node2D"]
 
@@ -121,6 +127,7 @@ centered = false
 
 [node name="YSort" type="YSort" parent="."]
 
+editor/display_folded = true
 sort/enabled = true
 
 [node name="wall_with_door" type="Sprite" parent="YSort"]
@@ -276,6 +283,8 @@ loop = true
 lookahead = 4.0
 
 [node name="level_collision" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="vertWall6" type="StaticBody2D" parent="level_collision"]
 
@@ -640,7 +649,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 661.168, 651.474 )
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -610.726, -355.595 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -654,7 +663,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -610.726, -355.595 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 trigger = false
 _update_shape_index = 0
 
@@ -662,7 +671,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 661.168, 784.141 )
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -610.726, -355.595 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -676,7 +685,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -610.726, -355.595 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 trigger = false
 _update_shape_index = 0
 
@@ -684,7 +693,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 661.168, 925.834 )
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -610.726, -355.595 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -698,7 +707,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -610.726, -355.595 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 trigger = false
 _update_shape_index = 0
 
@@ -706,7 +715,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 1118.74, 640.644 )
 input/pickable = false
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -617.043, -361.01 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -720,7 +729,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -617.043, -361.01 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 trigger = false
 _update_shape_index = 0
 
@@ -729,7 +738,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 646.163, 461.312 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -743,7 +752,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -752,7 +761,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 776.089, 463.707 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -766,7 +775,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -775,7 +784,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 905.416, 463.707 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -789,7 +798,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -798,7 +807,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 198.518, 332.781 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -812,7 +821,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -821,7 +830,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 197.41, 56.8808 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -835,7 +844,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -843,7 +852,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 800.042, -55.7481 )
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1.12929, 0, 0, 1.08637, -31.3994, 222.281 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -857,7 +866,7 @@ bounce = 0.0
 
 transform/pos = Vector2( -31.3994, 222.281 )
 transform/scale = Vector2( 1.12929, 1.08637 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0
 
@@ -866,7 +875,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 740.468, 32.7893 )
 input/pickable = false
-shapes/0/shape = SubResource( 15 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 128.224, 30.3582 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -879,7 +888,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="testbox"]
 
 transform/pos = Vector2( 128.224, 30.3582 )
-shape = SubResource( 15 )
+shape = SubResource( 14 )
 trigger = false
 _update_shape_index = 0
 
@@ -887,7 +896,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 1170.18, 540.591 )
 input/pickable = false
-shapes/0/shape = SubResource( 15 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -437.103, 249.666 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -900,7 +909,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="testbox1"]
 
 transform/pos = Vector2( -437.103, 249.666 )
-shape = SubResource( 15 )
+shape = SubResource( 14 )
 trigger = false
 _update_shape_index = 0
 
@@ -942,7 +951,7 @@ drag_margin/bottom = 0.2
 
 transform/pos = Vector2( -116.778, -28.4383 )
 input/pickable = false
-shapes/0/shape = SubResource( 16 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 52.0864, 376.245 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -955,7 +964,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vert"]
 
 transform/pos = Vector2( 52.0864, 376.245 )
-shape = SubResource( 16 )
+shape = SubResource( 15 )
 trigger = false
 _update_shape_index = 0
 
@@ -964,7 +973,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 1344.14, -33.6722 )
 input/pickable = false
-shapes/0/shape = SubResource( 16 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 4.19214, 420.091 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -977,7 +986,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vert1"]
 
 transform/pos = Vector2( 4.19214, 420.091 )
-shape = SubResource( 16 )
+shape = SubResource( 15 )
 trigger = false
 _update_shape_index = 0
 
@@ -1003,6 +1012,14 @@ process_mode = 1
 wait_time = 10.0
 one_shot = true
 autostart = false
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+
+transform/pos = Vector2( 0.928406, -0.663391 )
+navpoly = SubResource( 16 )
+enabled = true
 
 [connection signal="timeout" from="RandomRouterTimer" to="gamecontroller" method="_on_RandomRouterTimer_timeout"]
 

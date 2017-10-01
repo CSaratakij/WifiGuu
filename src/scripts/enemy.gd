@@ -6,8 +6,11 @@ onready var timer = get_node("Timer")
 
 var isHit = false
 var isCloseTarget = false
+var isNeedNewPath = true
 var pos_target = Vector2(0, 0)
 var relativePos = Vector2(0, 0)
+
+var path = []
 
 func _ready():
 	set_process(true)
@@ -15,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	relativePos = pos_target - get_global_pos()
-	isCloseTarget = relativePos.length() <= 1
+	isCloseTarget = relativePos.length() <= 0.4
 
 func _fixed_process(delta):
 	if not isHit:
@@ -37,8 +40,12 @@ func back_off(moveDir):
 func _on_Timer_timeout():
 	set_linear_velocity(Vector2(0, 0))
 	isHit = false
+	isNeedNewPath = true
 
 func move_to_target():
 	var dir = relativePos.normalized()
 	var velocity = MOVE_FORCE * dir
 	set_linear_velocity(velocity)
+
+func set_move_path(value):
+	path = value

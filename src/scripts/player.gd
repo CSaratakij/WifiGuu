@@ -142,3 +142,5 @@ func _on_animationTimer_timeout():
 	animAttack.stop()
 	animIdle.play("Idle")
 
+func set_current_bitrate(value):
+	currentBitRate = value
