@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var player = get_node("player")
+onready var player = get_node("YSort/player")
 onready var progressUI = get_node("progressUI").get_node("Panel").get_node("ProgressBar")
 
 

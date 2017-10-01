@@ -1,26 +1,13 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
-[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1814.65, 83.9256 )
-
-[sub_resource type="CapsuleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 51.4594
-height = 94.5986
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 72.7493, 844.522 )
+[ext_resource path="res://res/Background blank2.png" type="Texture" id=2]
+[ext_resource path="res://res/Background ref.png" type="Texture" id=3]
+[ext_resource path="res://res/Door.png" type="Texture" id=4]
+[ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefabs/router.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefabs/progressUI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=4]
 
@@ -29,15 +16,204 @@ _data = {
 "points": Vector2Array( 0, 0, 0, 0, 194.984, 223.933, 0, 0, 0, 0, 412.107, 102.01, 0, 0, 0, 0, 1165.36, 103.68, 0, 0, 0, 0, 1138.64, 634.797, 0, 0, 0, 0, 194.984, 613.085, 0, 0, 0, 0, 194.984, 223.933 )
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 134.808, 6.79791 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 156.351, 6.79791 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 67.4443, 32.5341 )
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1814.65, 83.9256 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 72.7493, 844.522 )
+
 [node name="level" type="Node2D"]
 
 transform/pos = Vector2( 2, 0 )
 script/script = ExtResource( 1 )
 
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ref" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 3 )
+centered = false
+
+[node name="YSort" type="YSort" parent="."]
+
+sort/enabled = true
+
+[node name="wall_with_door" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 690.063, 400.823 )
+z/relative = false
+texture = ExtResource( 4 )
+
+[node name="player" parent="YSort" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 636.641, 260.938 )
+mode = 2
+friction = 0.0
+
+[node name="Path2D" type="Path2D" parent="YSort"]
+
+editor/display_folded = true
+curve = SubResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="YSort/Path2D"]
+
+transform/pos = Vector2( 194.984, 223.933 )
+transform/rot = 29.3154
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="enemy" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 526.807, 268.33 )
+transform/rot = -29.3154
+
+[node name="enemy1" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 124.957, 106.486 )
+transform/rot = -29.3154
+
+[node name="enemy2" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 44.6195, 374.897 )
+transform/rot = -29.3154
+
+[node name="enemy3" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 469.837, 648.86 )
+transform/rot = -29.3154
+
+[node name="enemy4" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 697.945, 476.223 )
+transform/rot = -29.3154
+
+[node name="enemy5" parent="YSort/Path2D/PathFollow2D" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -46.0869, 183.198 )
+transform/rot = -29.3154
+
+[node name="level_collision" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="vertWall" type="StaticBody2D" parent="level_collision"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 570.027, 338.325 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/vertWall"]
+
+transform/pos = Vector2( 570.027, 338.325 )
+transform/rot = 90.0
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="vertWall2" type="StaticBody2D" parent="level_collision"]
+
+transform/pos = Vector2( 226.038, 1.10803 )
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 570.027, 338.325 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/vertWall2"]
+
+transform/pos = Vector2( 570.027, 338.325 )
+transform/rot = 90.0
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="vertWall1" type="StaticBody2D" parent="level_collision"]
+
+transform/pos = Vector2( 230.814, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 562.243, 167.842 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/vertWall1"]
+
+transform/pos = Vector2( 562.243, 167.842 )
+transform/rot = 90.0
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+
+[node name="horizonWall" type="StaticBody2D" parent="level_collision"]
+
+transform/pos = Vector2( 646.163, 461.312 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -5.98737, -20.357 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_collision/horizonWall"]
+
+transform/pos = Vector2( -5.98737, -20.357 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
 [node name="testbox" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 503.62, -259.882 )
+transform/pos = Vector2( 740.468, -70.3137 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 128.224, 30.3582 )
@@ -59,7 +235,7 @@ _update_shape_index = 0
 [node name="testbox1" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1161.77, 724.346 )
+transform/pos = Vector2( 1170.18, 540.591 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -440.194, 258.045 )
@@ -78,42 +254,9 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="router" parent="." instance=ExtResource( 2 )]
+[node name="router" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 254.635, 386.806 )
-
-[node name="testRigid" type="RigidBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 79.9714, 92.2746 )
-input/pickable = false
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 725.893, 319.885 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-mode = 2
-mass = 3.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-velocity/linear = Vector2( 0, 0 )
-velocity/angular = 0.0
-damp_override/linear = 20.0
-damp_override/angular = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testRigid"]
-
-transform/pos = Vector2( 725.893, 319.885 )
-shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -121,7 +264,7 @@ transform/pos = Vector2( 640, 360 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 1, 1 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -137,7 +280,8 @@ drag_margin/bottom = 0.2
 
 [node name="vert" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( -430.324, -28.4383 )
+editor/display_folded = true
+transform/pos = Vector2( -116.778, -28.4383 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 44.72, 376.245 )
@@ -158,7 +302,8 @@ _update_shape_index = 0
 
 [node name="vert1" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1655.79, -33.6722 )
+editor/display_folded = true
+transform/pos = Vector2( 1344.14, -33.6722 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 4.19214, 420.091 )
@@ -177,63 +322,11 @@ shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
-[node name="progressUI" parent="." instance=ExtResource( 3 )]
+[node name="progressUI" parent="." instance=ExtResource( 8 )]
 
-margin/left = -312.0
-margin/top = 178.0
-margin/right = -272.0
-margin/bottom = 218.0
-
-[node name="player" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 534.72, 265.815 )
-mode = 2
-friction = 0.0
-
-[node name="Path2D" type="Path2D" parent="."]
-
-curve = SubResource( 4 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-
-transform/pos = Vector2( 194.984, 223.933 )
-transform/rot = 29.3154
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
-rotate = true
-cubic_interp = true
-loop = true
-lookahead = 4.0
-
-[node name="enemy" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 526.807, 268.33 )
-transform/rot = -29.3154
-
-[node name="enemy1" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 124.957, 106.486 )
-transform/rot = -29.3154
-
-[node name="enemy2" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 44.6195, 374.897 )
-transform/rot = -29.3154
-
-[node name="enemy3" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 469.837, 648.86 )
-transform/rot = -29.3154
-
-[node name="enemy4" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 697.945, 476.223 )
-transform/rot = -29.3154
-
-[node name="enemy5" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( -46.0869, 183.198 )
-transform/rot = -29.3154
+margin/left = 2.0
+margin/top = -13.0
+margin/right = 42.0
+margin/bottom = 27.0
 
 
