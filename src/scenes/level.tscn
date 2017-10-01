@@ -997,6 +997,8 @@ margin/bottom = 27.0
 
 [node name="pauseUI" parent="." instance=ExtResource( 20 )]
 
+visibility/visible = false
+
 [node name="RandomRouterTimer" type="Timer" parent="."]
 
 process_mode = 1

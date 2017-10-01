@@ -20,7 +20,6 @@ func _process(delta):
 		timer.start()
 
 	if player.download_progress.current >= player.download_progress.maximum:
-		print("next level")
 		pauseUI.show()
 
 func _on_RandomRouterTimer_timeout():
@@ -50,3 +49,4 @@ func initialize():
 		enemy.set_pos_target(currentRouterPos)
 
 	pauseUI.hide()
+
