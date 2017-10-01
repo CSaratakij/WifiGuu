@@ -1,12 +1,35 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/router.gd" type="Script" id=1]
-[ext_resource path="res://res/Wifi hotspot-03.png" type="Texture" id=2]
+[ext_resource path="res://res/wifi_anim/1.png" type="Texture" id=2]
+[ext_resource path="res://res/wifi_anim/7.png" type="Texture" id=3]
+[ext_resource path="res://res/wifi_anim/2.png" type="Texture" id=4]
+[ext_resource path="res://res/wifi_anim/3.png" type="Texture" id=5]
+[ext_resource path="res://res/wifi_anim/4.png" type="Texture" id=6]
+[ext_resource path="res://res/wifi_anim/5.png" type="Texture" id=7]
+[ext_resource path="res://res/wifi_anim/6.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 174.421
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "routing"
+length = 1.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+}
 
 [node name="router" type="Area2D" groups=[
 "router",
@@ -31,5 +54,16 @@ _update_shape_index = 0
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/routing = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "routing"
 
 
